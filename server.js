@@ -1,0 +1,44 @@
+const express = require('express')
+const logger = require('morgan')
+const methodOverride = require('method-override')
+const session = require('express-session')
+require('dotenv').config()
+
+const db = require('./db')
+const authRouter = require('./routes/authRouter.js')
+const userRouter = require('./routes/userRouter.js')
+const carRouter = require('./routes/carRouter.js')
+const path = require('path')
+
+const PORT = process.env.PORT ? process.env.PORT : 3000
+
+const app = express()
+
+app.use(logger('dev'))
+
+app.use(methodOverride('_method'))
+app.use(
+  session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true
+}))
+
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+
+app.use(express.static(path.join(__dirname, 'public')))
+
+
+app.use('/auth', authRouter)
+app.use('/users', userRouter)
+app.use('/cars', carRouter)
+
+app.get('/', (req, res) => {
+  res.send('Our app is connected . . . ')
+})
+
+
+app.listen(PORT, () => {
+  console.log(`Running Server on Port ${PORT} . . . `)
+})
