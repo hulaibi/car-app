@@ -19,10 +19,8 @@ const registerUser = async (req, res) => {
     await User.create({
       email: req.body.email,
       password: hashedPassword,
-      first: req.body.first,
-      last: req.body.last,
-      picture: req.body.picture,
-      cars: []
+      name: req.body.name,
+      phon: req.body.phon
     })
 
     res.send(`Thanks for signing up!`)

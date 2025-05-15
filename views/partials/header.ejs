@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mongoose Recipes</title>
+    <title>car app</title>
     <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <nav>
       <a href="/">Home</a>
-      <a href="/recipes">All Recipes</a>
+      <a href="/cars">All Recipes</a>
 
       <% if (!user) { %>
-      <a href="/auth/sign-up">Sign Up</a>
-      <a href="/auth/sign-in">Sign In</a>
+      <a href="/views/auth/sign-up">Sign Up</a>
+      <a href="/views/auth/sign-in">Sign In</a>
       <% } else { %>
-      <a href="/recipes/new">New Recipe</a>
+      <a href="/car/new">New Recipe</a>
       <a href="/users/<%= user._id %>">My Profile</a>
-      <a href="/auth/sign-out">Sign Out</a>
+      <a href="/views/auth/sign-out">Sign Out</a>
       <% } %>
     </nav>
     <main>

@@ -1,0 +1,11 @@
+<%- include('../partials/header.ejs') %>
+
+<h2>Edit car</h2>
+<form action="/cars/<%= car._id %>?_method=PUT" method="POST">
+  <input type="text" name="title" value="<%= car.title %>" required />
+  <textarea name="description" required><%= car.description %></textarea>
+  <input type="text" name="image" value="<%= car.image %>" />
+  <button type="submit">Update</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>
