@@ -5,8 +5,7 @@ const getUserById = async (req, res) => {
     const user = await User.findById(req.params.id)
     const data = {
       _id: user._id,
-      first: user.first,
-      last: user.last,
+      name: user.name,
       picture: user.picture,
       cars: user.cars
     }

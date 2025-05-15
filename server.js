@@ -33,9 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/auth', authRouter)
 app.use('/users', userRouter)
 app.use('/cars', carRouter)
+app.use("/transactions", tranRouter);
+
 
 app.get('/', (req, res) => {
-  res.send('Our app is connected . . . ')
+  res.send('Our Cars app is connected . . . ')
 })
 
 
