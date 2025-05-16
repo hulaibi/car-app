@@ -1,0 +1,13 @@
+<%- include('../partials/header.ejs') %>
+
+<h2><%= car.title %></h2>
+<img src="<%= car.image %>" alt="<%= car.title %>" width="300" />
+<p><%= car.description %></p>
+
+<a href="/cars/<%= car._id %>/edit">Edit</a>
+
+<form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+  <button type="submit">Delete</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>
