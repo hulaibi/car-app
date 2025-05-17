@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const carController = require("../controllers/carController.js");
 
-router.post("/", carController.addCar);
+router.post("/addcar", carController.addCar);
 router.get("/", carController.getAllCars);
 router.put("/", carController.updateCarById);
 router.delete("/", carController.deleteCarById);

@@ -1,6 +1,28 @@
 const Transaction = require("../models/Transaction.js");
 const Car = require("../models/Car.js");
 
+
+
+const getAllTran = async (req, res) => {
+      try {
+        const cars = await Car.find({});
+
+        if (!cars) {
+            return res.send("no car available!!");
+        }
+          const transactionAll = new Transaction({
+          car: car.model,
+          buyer: req.user.name,
+          date: Date.now,
+          price: car.price
+        });
+      } catch (error) {
+        console.log(error);
+      }
+     }
+     
+        
+     
 const buyCar = async (req, res) => {
   try {
     const carId = req.body.id;
@@ -30,6 +52,10 @@ const buyCar = async (req, res) => {
   }
 };
 
+ 
+
+
 module.exports = {
+  getAllTran,
   buyCar,
 };
