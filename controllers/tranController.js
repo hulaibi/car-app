@@ -27,23 +27,26 @@ const buyCar = async (req, res) => {
   try {
     const carId = req.body.id;
     const location = req.body.location;
-    const price = req.body.location;
-    const buyerId = req.body.userId;
+    const price = req.body.price;
+    const buyerId = req.body.buyer;
+
     const car = await Car.findById(carId);
 
     if (!car) {
       return res.send("no car available!!");
     }
-    const transaction = new Transaction({
+    const transaction = await Transaction.create({
       car: car._id,
       buyer: buyerId, // change it to session later on
       seller: car.owner._id,
-      date: Date.now,
+      date: Date.now(),
       price: price,
       location: location,
     });
 
-    await transaction.save();
+    transaction.save();
+
+    res.send("transaction have been crated");
   } catch (error) {
     console.log(error.message);
   }
