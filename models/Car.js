@@ -5,7 +5,8 @@ const CarSchema = new mongoose.Schema({
   year: { type: Number, require: true },
   condition: { type: String, require: true },
   isAvailable: { type: Boolean, require: true },
-  owner: {type: mongoose.Schema.ObjectId, ref: "User" },
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  price: { type: Number, require: true },
 });
 
 const Car = new mongoose.model("Car", CarSchema);
