@@ -50,7 +50,7 @@ const signInUser = async (req, res) => {
       _id: user._id
     }
 
-    res.send(`Thanks for signing in, ${user._id}!`)
+    res.send(`Thanks for signing in, ${user.name}!`)
    
   } catch (error) {
     console.error('An error has occurred signing in a user!', error.message)
@@ -93,7 +93,7 @@ const updatePassword = async (req, res) => {
     user.password = hashedPassword
     await user.save()
 
-    res.send(`Your password has been updated, ${user.first}!`)
+    res.send(`Your password has been updated, ${user.name}!`)
   } catch (error) {
     console.error("An error has occurred updating a user's password!", error.message)
   }
