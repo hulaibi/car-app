@@ -8,6 +8,7 @@ const db = require('./db')
 const authRouter = require('./routes/authRouter.js')
 const userRouter = require('./routes/userRouter.js')
 const carRouter = require('./routes/carRouter.js')
+const tranRouter = require('./routes/tranRouter.js');
 const path = require('path')
 
 const PORT = process.env.PORT ? process.env.PORT : 3000

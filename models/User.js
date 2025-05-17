@@ -1,12 +1,15 @@
 const mongoose = require('mongoose')
+const Transaction = require('./Transaction')
 
 const userSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    phon: { type: String },
-   
+    phone: { type: String },
+    cars: [{type: ObjectId, ref:"Car"}],
+    bought:[{type: ObjectId, ref: "Transaction"}],
+    sell:[{type: ObjectId, ref: "Transaction"}]
   },
   { timestamps: true }
 )

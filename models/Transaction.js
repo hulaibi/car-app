@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 
 const tranSchema = new mongoose.Schema({
  
-  car: {type: String, required : true},
-  buyer: {type: String, required : true},
-  seller: {type: String, required : true},
-  date: {type: String, required : true},
-  price:{type: String, required : true},
+  car: {type: mongoose.Schema.ObjectId, required : true, ref: "Car"},
+  buyer: {type: mongoose.Schema.ObjectId, required : true, ref: "User"},
+  seller: {type: mongoose.Schema.ObjectId, required : true, ref: "User"},
+  date: {type: Date, default: Date.now},
+  price:{type: Number, required : true},
 
 });
 
-const Transaction = mongoose.model("Transactionv", tranSchema );
+const Transaction = mongoose.model("Transaction", tranSchema );
 
 module.exports = Transaction;
