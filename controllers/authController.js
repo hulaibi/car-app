@@ -17,10 +17,10 @@ const registerUser = async (req, res) => {
     const hashedPassword = bcrypt.hashSync(req.body.password, 12)
 
     await User.create({
+      name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
-      name: req.body.name,
-      phon: req.body.phon
+      phone: req.body.phone
     })
 
     res.send(`Thanks for signing up!`)
