@@ -8,7 +8,7 @@ const addCar = async (req, res) => {
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
     const newOwner = req.body.name;
-    const theprice = req.body.price;
+    const newPrice = req.body.price;
 
     const user = await User.findOne({
       name: newOwner,
@@ -18,8 +18,8 @@ const addCar = async (req, res) => {
       year: newYear,
       condition: newCondition,
       isAvailable: newIsAvailable,
-      price: theprice
-      
+      price: newPrice,
+      owner: user._id,
     });
     user.cars.push(car._id);
 
