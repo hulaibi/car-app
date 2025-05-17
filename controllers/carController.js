@@ -7,7 +7,8 @@ const addCar = async (req, res) => {
     const newYear = req.body.year;
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
-    const newOwner = req.body.owner;
+    const newOwner = req.body.name;
+    const theprice = req.body.price;
 
     const user = await User.findOne({
       name: newOwner,
@@ -17,13 +18,14 @@ const addCar = async (req, res) => {
       year: newYear,
       condition: newCondition,
       isAvailable: newIsAvailable,
-      owner: newOwner,
+      price: theprice
+      
     });
-    user.Car.push(car._id);
+    user.cars.push(car._id);
 
     user.save();
 
-    console.log(`done adding car to the user ${user.name}`);
+    res.send(`done adding car to the user ${user.name}`);
   } catch (error) {
     console.log(error.message);
   }

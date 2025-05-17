@@ -2,16 +2,16 @@ const Transaction = require("../models/Transaction.js");
 const Car = require("../models/Car.js");
 
 
-exports.buyCar = async (req, res) => {
+getAllTran = async (req, res) => {
      try {
-        const car = await Car.findOne({ _id: req.params.id, status: 'available' });
+        const cars = await Car.find({});
 
-        if (!car) {
+        if (!cars) {
             return res.send("no car available!!");
         }
           const transaction = new Transaction({
-          car: car._id,
-          buyer: req.user._id,
+          car: car.model,
+          buyer: req.user.name,
           date: Date.now,
           price: car.price
         });
@@ -22,3 +22,7 @@ exports.buyCar = async (req, res) => {
         
      }
 };
+
+module.exports = {
+  getAllTran,
+}

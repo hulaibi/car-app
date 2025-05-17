@@ -6,6 +6,7 @@ const CarSchema = new mongoose.Schema({
   condition: { type: String, require: true },
   isAvailable: { type: Boolean, require: true },
   owner: {type: mongoose.Schema.ObjectId, ref: "User" },
+  price:{type: Number, required : true},
 });
 
 const Car = new mongoose.model("Car", CarSchema);
