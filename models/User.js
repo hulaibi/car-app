@@ -7,9 +7,9 @@ const userSchema = new mongoose.Schema(
     email: { type: String, required: true },
     password: { type: String, required: true },
     phone: { type: String },
-    cars: [{type: ObjectId, ref:"Car"}],
-    bought:[{type: ObjectId, ref: "Transaction"}],
-    sell:[{type: ObjectId, ref: "Transaction"}]
+    cars: [{type: mongoose.Schema.ObjectId, ref:"Car"}],
+    bought:[{type: mongoose.Schema.ObjectId, ref: "Transaction"}],
+    sell:[{type: mongoose.Schema.ObjectId, ref: "Transaction"}]
   },
   { timestamps: true }
 )
