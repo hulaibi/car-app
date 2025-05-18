@@ -11,9 +11,13 @@ const carRouter = require('./routes/carRouter.js')
 const tranRouter = require('./routes/tranRouter.js');
 const path = require('path')
 
-const PORT = process.env.PORT ? process.env.PORT : 3000
+const PORT = process.env.PORT ? process.env.PORT : 4000
 
 const app = express()
+
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(logger('dev'))
 
@@ -30,6 +34,10 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use(express.static(path.join(__dirname, 'public')))
 
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;  //Make `user` available in all EJS templates
+  next();
+});
 
 app.use('/auth', authRouter)
 app.use('/users', userRouter)
@@ -38,7 +46,7 @@ app.use("/transactions", tranRouter);
 
 
 app.get('/', (req, res) => {
-  res.send('Our Cars app is connected . . . ')
+  res.render('index');
 })
 
 
