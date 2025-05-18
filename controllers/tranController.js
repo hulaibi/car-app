@@ -4,19 +4,20 @@ const User = require("../models/User.js");
 
 const getAllTran = async (req, res) => {
   try {
-    const cars = await Car.find({});
+    //https://mongoosejs.com/docs/populate.html#population
+    const transactions = await Transaction.find()
+      .populate('car')
+      .populate('buyer', 'name')
+      .populate('seller', 'name');  
 
-    if (!cars) {
-      return res.send("no car available!!");
+    if (!transactions || transactions.length === 0) {
+     return res.render('transactions/all', { transactions: [] });
     }
-    const transactionAll = new Transaction({
-      car: car.model,
-      buyer: req.user.name,
-      date: Date.now,
-      price: car.price,
-    });
+
+    res.render('transactions/all', { transactions });
   } catch (error) {
     console.log(error);
+    res.status(500).send("Server error");
   }
 };
 

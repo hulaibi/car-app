@@ -9,13 +9,13 @@
   <body>
     <nav>
       <a href="/">Home</a>
-      <a href="/cars">All Recipes</a>
-
+      <a href="/cars">All Cars</a>
+       <a href="/transactions/all">LT</a>
       <% if (!user) { %>
       <a href="/views/auth/sign-up">Sign Up</a>
       <a href="/views/auth/sign-in">Sign In</a>
       <% } else { %>
-      <a href="/car/new">New Recipe</a>
+      <a href="/car/new">New Cars</a>
       <a href="/users/<%= user._id %>">My Profile</a>
       <a href="/views/auth/sign-out">Sign Out</a>
       <% } %>
