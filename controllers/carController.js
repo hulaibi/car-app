@@ -13,6 +13,9 @@ const addCar = async (req, res) => {
     const user = await User.findOne({
       name: newOwner,
     });
+    if (!user) {
+      return res.send("cant find owner");
+    }
     const car = await Car.create({
       model: newModel,
       year: newYear,
@@ -33,9 +36,13 @@ const addCar = async (req, res) => {
 
 const getAllCars = async (req, res) => {
   try {
-    const cars = await Car.find({});
+    const cars = await Car.find({}).populate("owner");
 
-    console.log(cars);
+    if (!cars) {
+      return res.send("there is no cars");
+    }
+
+    res.send(cars);
   } catch (error) {
     console.log(error.message);
   }
@@ -43,8 +50,11 @@ const getAllCars = async (req, res) => {
 
 const getCarById = async (req, res) => {
   try {
-    const carByID = await Car.findById(req.params.id);
-    console.log(carByID);
+    const carByID = await Car.findById(req.params.id).populate("owner");
+    if (!carByID) {
+      return res.send("car did not found");
+    }
+    res.send(carByID);
   } catch (error) {
     console.log(error.message);
   }
@@ -56,7 +66,8 @@ const updateCarById = async (req, res) => {
     const newYear = req.body.year;
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
-    const newOwner = req.body.owner;
+
+    const newPrice = req.body.price;
     const updatedCar = await Car.findByIdAndUpdate(
       req.body.id,
       {
@@ -64,12 +75,16 @@ const updateCarById = async (req, res) => {
         year: newYear,
         condition: newCondition,
         isAvailable: newIsAvailable,
-        owner: newOwner,
+        price: newPrice,
       },
       { new: true }
     );
 
-    console.log(updatedCar);
+    if (!updatedCar) {
+      return res.send("error in updating car");
+    }
+
+    res.send(updatedCar);
   } catch (error) {
     console.log(error.message);
   }
@@ -77,8 +92,22 @@ const updateCarById = async (req, res) => {
 
 const deleteCarById = async (req, res) => {
   try {
-    const deleteCar = await Car.findByIdAndDelete(req.body.id);
-    console.log("have be deleted");
+    const carId = req.body.id;
+
+    const allUsers = await User.find({});
+    allUsers.forEach((doc) => {
+      if (doc.cars.includes(carId)) {
+        const carIndex = doc.cars.indexOf(carId);
+        doc.cars.splice(carIndex, 1);
+        doc.save();
+      }
+    });
+
+    const deleteCar = await Car.findByIdAndDelete(carId);
+    if (!deleteCar) {
+      return res.send("car couldn't be deleted");
+    }
+    res.send("have been deleted");
   } catch (error) {
     console.log(error.message);
   }
