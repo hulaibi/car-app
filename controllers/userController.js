@@ -17,7 +17,7 @@ const getUserById = async (req, res) => {
       cars: user.cars,
     };
 
-    res.send(user);
+    res.render('./users/profile.ejs', { user });
   } catch (error) {
     console.error("An error has occurred finding a user!", error.message);
   }

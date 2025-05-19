@@ -9,7 +9,8 @@ const getAllTran = async (req, res) => {
       .populate("car")
       .populate("buyer", "name")
       .populate("seller", "name");
-
+    
+      
     if (!transactions || transactions.length === 0) {
       return res.render("transactions/all", { transactions: [] });
     }
@@ -17,7 +18,7 @@ const getAllTran = async (req, res) => {
     res.render("transactions/all", { transactions });
   } catch (error) {
     console.log(error);
-    res.status(500).send("Server error");
+    console.error("An error has occurred finding a transaction!", error.message);
   }
 };
 

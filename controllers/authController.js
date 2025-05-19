@@ -15,14 +15,15 @@ const registerUser = async (req, res) => {
 
     const hashedPassword = bcrypt.hashSync(req.body.password, 12);
 
-    let user = await User.create({
+
+     let user = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: hashedPassword,
       phone: req.body.phone,
     });
 
-    res.render('./auth/thanks.ejs', {user});
+    res.render('./auth/thanks.ejs', { user });
     
   } catch (error) {
     console.error("An error has occurred registering a user!", error.message);
