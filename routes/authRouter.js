@@ -20,6 +20,9 @@ router.get('/sign-out', (req, res) => {
 })
 
 router.put('/:id', authController.updatePassword)
+router.get('/:id/update-password', (req, res) => {
+  res.render('./auth/update-password.ejs')
+})
 
 
 
