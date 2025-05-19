@@ -3,9 +3,11 @@ const router = express.Router()
 const authController = require('../controllers/authController.js')
 
 router.post('/sign-up', authController.registerUser)
+
 router.get('/sign-up', (req, res) => {
-  res.render('./auth/sign-up.ejs')
-})
+  res.render('auth/sign-up');
+});
+
 
 router.post('/sign-in', authController.signInUser)
 
