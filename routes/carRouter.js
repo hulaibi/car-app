@@ -11,6 +11,7 @@ router.post("/new", carController.addCar);
 router.get("/all", carController.getAllCars);
 router.get("/:id",carController.getCarById);
 router.put("/update", carController.updateCarById);
+router.get("/new", carController.newCar);
 router.delete("/delete", carController.deleteCarById);
 
 module.exports = router;
