@@ -37,12 +37,12 @@ const addCar = async (req, res) => {
 const getAllCars = async (req, res) => {
   try {
     const cars = await Car.find({}).populate("owner");
-
+    
     if (!cars) {
       return res.send("there is no cars");
     }
 
-    res.send(cars);
+    res.render("cars/all", {cars});
   } catch (error) {
     console.log(error.message);
   }
