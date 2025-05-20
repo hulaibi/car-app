@@ -15,4 +15,12 @@
   <% }) %>
 </ul>
 
+<% if (user.cars.length === 1) { %>
+  <p>You have one car.</p>
+<% } else if (user.cars.length > 1) { %>
+  <p>You have more than one car.</p>
+<% } else { %>
+  <p>You have no cars.</p>
+<% } %>
+
 <%- include('../partials/footer.ejs') %>
