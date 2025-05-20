@@ -7,28 +7,27 @@ const addCar = async (req, res) => {
     const newYear = req.body.year;
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
-    const newOwner = req.body.name;
+    const newOwner = req.body.owner;
     const newPrice = req.body.price;
 
-    const user = await User.findOne({
-      name: newOwner,
-    });
+    const user =  await User.findById(newOwner);
+    
     if (!user) {
       return res.send("cant find owner");
     }
     const car = await Car.create({
-      model: newModel,
-      year: newYear,
-      condition: newCondition,
-      isAvailable: newIsAvailable,
-      price: newPrice,
+      model: req.body.model,
+      year: req.body.year,
+      condition: req.body.condition,
+      isAvailable: req.body.isAvailable === "true",
+      price: req.body.price,
       owner: user._id,
     });
     user.cars.push(car._id);
 
     user.save();
 
-    res.send(`done adding car to the user ${user.name}`);
+     res.redirect("/cars/all");
   } catch (error) {
     console.log(error.message);
   }
@@ -37,12 +36,10 @@ const addCar = async (req, res) => {
 const getAllCars = async (req, res) => {
   try {
     const cars = await Car.find({}).populate("owner");
-    
-    if (!cars) {
-      return res.send("there is no cars");
-    }
 
-    res.render("cars/all", {cars});
+    console.log("Cars found:", cars);
+    res.render("cars/all", { cars });
+
   } catch (error) {
     console.log(error.message);
   }

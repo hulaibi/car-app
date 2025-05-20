@@ -1,12 +1,25 @@
 <%- include('../partials/header.ejs') %>
 
 <h2>All Cars</h2>
-<ul>
-  <% cars.forEach(car => { %>
-    <li>
-      <a href="/cars/<%= car._id %>"><%= car.title %></a>
-    </li>
-  <% }) %>
-</ul>
+
+<% if (cars.length === 0) { %>
+  <div class="alert">No cars available!</div>
+<% } else { %>
+  <ul>
+    <% cars.forEach(car => { %>
+      <li style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px;">
+        <h3><a href="/cars/<%= car._id %>"><%= car.model %> - <%= car.year %></a></h3>
+        <p><strong>Condition:</strong> <%= car.condition %></p>
+        <p><strong>Price:</strong> $<%= car.price %></p>
+        <p><strong>Available:</strong> <%= car.isAvailable ? 'Yes' : 'No' %></p>
+        <% if (car.owner && car.owner.name) { %>
+          <p><strong>Owner:</strong> <%= car.owner.name %></p>
+        <% } else { %>
+          <p><strong>Owner:</strong> Unknown</p>
+        <% } %>
+      </li>
+    <% }) %>
+  </ul>
+<% } %>
 
 <%- include('../partials/footer.ejs') %>

@@ -1,12 +1,20 @@
 <%- include('../partials/header.ejs') %>
 
-<h2>New car</h2>
-<form action="/cars" method="POST">
-  <input type="text" name="title" placeholder="Title" required />
-  <textarea name="description" placeholder="Description" required></textarea>
-  <input type="text" name="image" placeholder="Image URL" />
-  <input type="hidden" name="author" value="<%= user._id %>" />
-  <button type="submit">Create</button>
+<h2>Add New Car</h2>
+
+  <form action="/cars/new" method="POST">
+  <input type="hidden" name="owner" value="<%= user._id %>" />
+  <input type="text" name="model" placeholder="Model" required />
+  <input type="number" name="year" placeholder="Year" required />
+  <input type="text" name="condition" placeholder="Condition" required />
+  <select name="isAvailable">
+    <option value="true">Available</option>
+    <option value="false">Not Available</option>
+  </select>
+  <input type="number" name="price" placeholder="Price" required />
+
+
+  <button type="submit">Add Car</button>
 </form>
 
 <%- include('../partials/footer.ejs') %>
