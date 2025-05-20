@@ -172,3 +172,83 @@ footer {
   font-size: 0.9rem;
   color: #ddd;
 }
+
+
+/* ================================
+   Profile Page Specific Styling
+================================== */
+.profile-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.profile-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.profile-container .actions {
+  margin-bottom: 30px;
+}
+
+.profile-container .btn {
+  background-color: #f39c12;
+  color: #222;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.profile-container .btn:hover {
+  background-color: #d87e04;
+}
+
+.cars-section {
+  text-align: center;
+}
+
+.car-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+}
+
+.car-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.car-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.car-item a {
+  color: #f39c12;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.car-item a:hover {
+  text-decoration: underline;
+}
+
+.car-count p {
+  font-style: italic;
+  color: #ddd;
+  margin-top: 15px;
+}

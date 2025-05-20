@@ -1,26 +1,35 @@
 <%- include('../partials/header.ejs') %>
 
-<h2><%= user.name %>'s Profile</h2>
+<div class="profile-container">
+  <h2><%= user.name %>'s Profile</h2>
 
+  <div class="actions">
+    <a href="/auth/<%= user._id %>/update-password" class="btn">Update Password</a>
+  </div>
 
+  <div class="cars-section">
+    <h3>Your Cars</h3>
 
-<div>
-  <a href=<%= `/auth/${user._id}/update-password` %>>Update Password</a>
+    <% if (user.cars.length > 0) { %>
+      <ul class="car-list">
+        <% user.cars.forEach(car => { %>
+          <li class="car-item">
+            <a href="/cars/<%= car._id %>"><strong><%= car.model %></strong> - <%= car.year %> - $<%= car.price %></a>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>You have no cars.</p>
+    <% } %>
+
+    <div class="car-count">
+      <% if (user.cars.length === 1) { %>
+        <p>You have one car.</p>
+      <% } else if (user.cars.length > 1) { %>
+        <p>You have more than one car.</p>
+      <% } %>
+    </div>
+  </div>
 </div>
-
-<h3>cars:</h3>
-<ul>
-  <% user.cars.forEach(car => { %>
-    <li><a href="/cars/<%= car._id %>"><%= car.title %></a></li>
-  <% }) %>
-</ul>
-
-<% if (user.cars.length === 1) { %>
-  <p>You have one car.</p>
-<% } else if (user.cars.length > 1) { %>
-  <p>You have more than one car.</p>
-<% } else { %>
-  <p>You have no cars.</p>
-<% } %>
 
 <%- include('../partials/footer.ejs') %>
