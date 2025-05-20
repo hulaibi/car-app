@@ -49,7 +49,7 @@ const signInUser = async (req, res) => {
       _id: user._id,
     };
 
-    res.send(`Thanks for signing in, ${user.name}!`);
+    res.redirect("/")
   } catch (error) {
     console.error("An error has occurred signing in a user!", error.message);
   }

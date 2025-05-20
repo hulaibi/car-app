@@ -1,7 +1,15 @@
 <%- include('./partials/header.ejs') %>
 
-<h1>Welcome to The Cars Show!</h1>
 
+
+
+
+
+
+<% if (!user) { %>
 <p>Sign in or sign up to get started.</p>
-
+<% } else { %>
+    
+    <h1>Welcome to The Cars Show!</h1>
+<% } %>
 <%- include('./partials/footer.ejs') %>

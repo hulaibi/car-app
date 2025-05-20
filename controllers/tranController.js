@@ -5,6 +5,12 @@ const User = require("../models/User.js");
 const getAllTran = async (req, res) => {
   try {
     //https://mongoosejs.com/docs/populate.html#population
+
+    const user = await User.findById(req.params.id)
+          .populate("cars")
+          .populate("bought")
+          .populate("sell");
+
     const transactions = await Transaction.find()
       .populate("car")
       .populate("buyer", "name")
@@ -15,7 +21,7 @@ const getAllTran = async (req, res) => {
       return res.render("transactions/all", { transactions: [] });
     }
 
-    res.render("transactions/all", { transactions });
+    res.render("transactions/all", { transactions,user });
   } catch (error) {
     console.log(error);
     console.error("An error has occurred finding a transaction!", error.message);
