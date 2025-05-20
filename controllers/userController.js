@@ -23,6 +23,28 @@ const getUserById = async (req, res) => {
   }
 };
 
+
+
+const getUserPro = async (req, res) => {
+  try {
+    
+    const user = await User.findById(req.params.id).populate("cars");
+
+    if (!user) {
+      return res.send("User not found");
+    }
+
+    res.render("users/profile", { user });
+  } catch (error) {
+    console.log(error.message);
+    res.send("error");
+  }
+};
+
+
+
+
 module.exports = {
   getUserById,
+  getUserPro
 };

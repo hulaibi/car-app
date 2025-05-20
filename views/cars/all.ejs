@@ -12,6 +12,13 @@
         <p><strong>Condition:</strong> <%= car.condition %></p>
         <p><strong>Price:</strong> $<%= car.price %></p>
         <p><strong>Available:</strong> <%= car.isAvailable ? 'Yes' : 'No' %></p>
+
+        <% if (car.isAvailable) { %>
+        <form action="/cars/<%= car._id %>/buy" method="POST" style="margin-top: 10px;">
+         <button type="submit" class="btn-buy">Buy</button>
+        </form>
+        <% } %>
+
         <% if (car.owner && car.owner.name) { %>
           <p><strong>Owner:</strong> <%= car.owner.name %></p>
         <% } else { %>
