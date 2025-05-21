@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 
-<h2>Add New Car</h2>
+<h2 class="spaceInTop" style="margin-bottom: 20px;">Add New Car</h2>
 
   <form action="/cars/new" method="POST">
   <input type="hidden" name="owner" value="<%= user._id %>" />

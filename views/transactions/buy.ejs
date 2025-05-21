@@ -1,0 +1,25 @@
+<%- include('../partials/header.ejs') %>
+
+<h2 class="spaceInTop" style="margin-bottom: 20px">buy the car</h2>
+
+<form action="/transactions/buy" method="POST">
+  <input type="hidden" name="id" value="<%= car._id %>" />
+
+  <input type="text" name="model" value="<%= car.model%>" required disabled />
+  <input type="number" name="year" value="<%= car.year%>" required disabled />
+  <input
+    type="text"
+    name="condition"
+    value="<%= car.condition%>"
+    required
+    disabled
+  />
+
+  <input type="number" name="price" value="<%= car.price%>" required />
+  <input type="text" name="location" placeholder="location" required />
+  <input type="text" name="buyer" value="<%= user._id%>" required />
+
+  <button type="submit">buy</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>
