@@ -1,32 +1,43 @@
 <%- include('../partials/header.ejs') %>
 
-<h2>All Cars</h2>
+<h2 class="spaceInTop">All Cars</h2>
 
 <% if (cars.length === 0) { %>
-  <div class="alert">No cars available!</div>
+<div class="alert">No cars available!</div>
 <% } else { %>
-  <ul>
-    <% cars.forEach(car => { %>
-      <li style="margin-bottom: 20px; border: 1px solid #ccc; padding: 10px;">
-        <h3><a href="/cars/<%= car._id %>"><%= car.model %> - <%= car.year %></a></h3>
-        <p><strong>Condition:</strong> <%= car.condition %></p>
-        <p><strong>Price:</strong> $<%= car.price %></p>
-        <p><strong>Available:</strong> <%= car.isAvailable ? 'Yes' : 'No' %></p>
+<ul>
+  <% cars.forEach(car => { %>
+  <div class="carEntity">
+    <h3>
+      <a href="/cars/<%= car._id %>"><%= car.model %> - <%= car.year %></a>
+    </h3>
 
-        <% if (car.isAvailable) { %>
-        <form action="/cars/<%= car._id %>/buy" method="POST" style="margin-top: 10px;">
-         <button type="submit" class="btn-buy">Buy</button>
-        </form>
-        <% } %>
-
-        <% if (car.owner && car.owner.name) { %>
-          <p><strong>Owner:</strong> <%= car.owner.name %></p>
-        <% } else { %>
-          <p><strong>Owner:</strong> Unknown</p>
-        <% } %>
-      </li>
-    <% }) %>
-  </ul>
-<% } %>
-
-<%- include('../partials/footer.ejs') %>
+    <div class="carinfo">
+      <% if (car.owner && car.owner.name) { %>
+      <p><strong>Owner:</strong> <%= car.owner.name %></p>
+      <% } else { %>
+      <p><strong>Owner:</strong> Unknown</p>
+      <% } %>
+      <p><strong>Condition:</strong> <%= car.condition %></p>
+      <p><strong>Price:</strong> $<%= car.price %></p>
+      <p><strong>Available:</strong> <%- car.isAvailable ? 'Yes' : 'No' %></p>
+    </div>
+    <% if (car.isAvailable && car.owner._id!=user._id ) { %>
+    <form
+      action="/cars/<%= car._id %>/buy"
+      method="POST"
+      style="margin-top: 10px"
+    >
+      <button type="submit" class="btn-buy">Buy</button>
+    </form>
+    <% } %> <% if(car.owner._id == user._id) {%>
+    <a class="carsputton" href="/cars/edit/<%=car._id%>">edit</a>
+    <form action="/cars/delete" method="POST" style="margin-top: 10px">
+      <input type="hidden" name="id" value="<%= car._id %>" />
+      <button type="submit" class="btn">delete</button>
+    </form>
+    <%}%>
+  </div>
+  <% }) %>
+</ul>
+<% } %> <%- include('../partials/footer.ejs') %>
