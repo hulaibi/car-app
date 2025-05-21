@@ -14,8 +14,8 @@ const addCar = async (req, res) => {
     const newOwner = req.body.owner;
     const newPrice = req.body.price;
 
-    const user =  await User.findById(newOwner);
-    
+    const user = await User.findById(newOwner);
+
     if (!user) {
       return res.send("cant find owner");
     }
@@ -23,7 +23,7 @@ const addCar = async (req, res) => {
       model: req.body.model,
       year: req.body.year,
       condition: req.body.condition,
-      isAvailable: req.body.isAvailable === "true",
+      isAvailable: req.body.isAvailable,
       price: req.body.price,
       owner: user._id,
     });
@@ -31,7 +31,7 @@ const addCar = async (req, res) => {
 
     user.save();
 
-     res.redirect("/cars/all");
+    res.redirect("/cars/all");
   } catch (error) {
     console.log(error.message);
   }
@@ -43,7 +43,6 @@ const getAllCars = async (req, res) => {
 
     console.log("Cars found:", cars);
     res.render("cars/all", { cars });
-
   } catch (error) {
     console.log(error.message);
   }
@@ -85,7 +84,7 @@ const updateCarById = async (req, res) => {
       return res.send("error in updating car");
     }
 
-    res.send(updatedCar);
+    res.redirect("/cars/all");
   } catch (error) {
     console.log(error.message);
   }
@@ -108,7 +107,7 @@ const deleteCarById = async (req, res) => {
     if (!deleteCar) {
       return res.send("car couldn't be deleted");
     }
-    res.send("have been deleted");
+    res.redirect("/cars/all");
   } catch (error) {
     console.log(error.message);
   }
