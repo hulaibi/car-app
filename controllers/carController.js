@@ -1,37 +1,34 @@
 const Car = require("../models/Car.js");
 const User = require("../models/User.js");
 
-const newCar = (req, res) => {
-  res.render("cars/new");
-};
-
 const addCar = async (req, res) => {
   try {
     const newModel = req.body.model;
     const newYear = req.body.year;
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
-    const newOwner = req.body.owner;
+    const newOwner = req.body.name;
     const newPrice = req.body.price;
 
-    const user =  await User.findById(newOwner);
-    
+    const user = await User.findOne({
+      name: newOwner,
+    });
     if (!user) {
       return res.send("cant find owner");
     }
     const car = await Car.create({
-      model: req.body.model,
-      year: req.body.year,
-      condition: req.body.condition,
-      isAvailable: req.body.isAvailable === "true",
-      price: req.body.price,
+      model: newModel,
+      year: newYear,
+      condition: newCondition,
+      isAvailable: newIsAvailable,
+      price: newPrice,
       owner: user._id,
     });
     user.cars.push(car._id);
 
     user.save();
 
-     res.redirect("/cars/all");
+    res.send(`done adding car to the user ${user.name}`);
   } catch (error) {
     console.log(error.message);
   }
@@ -40,10 +37,12 @@ const addCar = async (req, res) => {
 const getAllCars = async (req, res) => {
   try {
     const cars = await Car.find({}).populate("owner");
+    
+    if (!cars) {
+      return res.send("there is no cars");
+    }
 
-    console.log("Cars found:", cars);
-    res.render("cars/all", { cars });
-
+    res.render("cars/all", {cars});
   } catch (error) {
     console.log(error.message);
   }
@@ -116,7 +115,6 @@ const deleteCarById = async (req, res) => {
 
 module.exports = {
   addCar,
-  newCar,
   getAllCars,
   getCarById,
   updateCarById,
