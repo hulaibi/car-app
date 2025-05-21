@@ -1,10 +1,28 @@
 <%- include('../partials/header.ejs') %>
+<div class="spaceInTop">
+  <% if (error !=="") {%>
 
-<h2>Sign In</h2>
-<form action="/auth/sign-in" method="POST">
-  <input type="email" name="email" placeholder="Email" required />
-  <input type="password" name="password" placeholder="Password" required />
-  <button type="submit">Sign In</button>
-</form>
-
+  <div class="error">
+    <p><%- error%></p>
+  </div>
+  <%}%>
+  <h2>Sign In</h2>
+  <form action="/auth/sign-in" method="POST">
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+      pattern="^[a-zA-Z0-9\.\+\-\_]{3,}@[a-zA-Z]\.[a-zA-Z]{2,}$"
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      required
+      pattern="^[a-zA-Z0-9\-\_\@\#\$\%\&\*]{6,}$"
+    />
+    <button type="submit">Sign In</button>
+  </form>
+</div>
 <%- include('../partials/footer.ejs') %>

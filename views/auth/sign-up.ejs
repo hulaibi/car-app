@@ -1,13 +1,43 @@
 <%- include('../partials/header.ejs') %>
-
-<h2>Sign Up</h2>
-<form action="/auth/sign-up" method="POST">
-  <input type="text" name="name" placeholder="name" required />
-  <input type="email" name="email" placeholder="Email" required />
-  <input type="text" name="phone" placeholder="phone" />
-  <input type="password" name="password" placeholder="Password" required />
-  <input type="password" name="confirmPassword" placeholder="Confirm Password" required />
-  <button type="submit">Register</button>
-</form>
-
+<div class="spaceInTop">
+  <h2>Sign Up</h2>
+  <form action="/auth/sign-up" method="POST">
+    <input
+      type="text"
+      name="name"
+      placeholder="name"
+      required
+      pattern="^[a-zA-Z0-9]{3,}$"
+    />
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      required
+      pattern="^[a-zA-Z0-9\.\+\-\_]{3,}@[a-zA-Z]\.[a-zA-Z]{2,}$"
+    />
+    <input
+      type="text"
+      name="phone"
+      placeholder="phone"
+      required
+      pattern="^[0-9]{8}$"
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Password"
+      required
+      pattern="^[a-zA-Z0-9\-\_\@\#\$\%\&\*]{6,}$"
+    />
+    <input
+      type="password"
+      name="confirmPassword"
+      placeholder="Confirm Password"
+      required
+      pattern="^[a-zA-Z0-9\-\_\@\#\$\%\&\*]{6,}$"
+    />
+    <button type="submit">Register</button>
+  </form>
+</div>
 <%- include('../partials/footer.ejs') %>

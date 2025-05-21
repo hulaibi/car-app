@@ -9,16 +9,17 @@
   <body>
     <nav>
       <a href="/">Home</a>
-      <a href="/cars/all">All Cars</a>
-      
+
       <% if (!user) { %>
       <a href="/auth/sign-up">Sign Up</a>
       <a href="/auth/sign-in">Sign In</a>
       <% } else { %>
+      <a href="/cars/all">All Cars</a>
       <a href="/transactions/all">LT</a>
       <a href="/cars/new">New Cars</a>
       <a href="/users/<%= user._id %>">My Profile</a>
       <a href="/auth/sign-out">Sign Out</a>
       <% } %>
     </nav>
-    <main>
+  </body>
+</html>

@@ -10,25 +10,24 @@ const addCar = async (req, res) => {
     const newOwner = req.body.name;
     const newPrice = req.body.price;
 
-    const user = await User.findOne({
-      name: newOwner,
-    });
+    const user = await User.findById(newOwner);
+
     if (!user) {
       return res.send("cant find owner");
     }
     const car = await Car.create({
-      model: newModel,
-      year: newYear,
-      condition: newCondition,
-      isAvailable: newIsAvailable,
-      price: newPrice,
+      model: req.body.model,
+      year: req.body.year,
+      condition: req.body.condition,
+      isAvailable: req.body.isAvailable,
+      price: req.body.price,
       owner: user._id,
     });
     user.cars.push(car._id);
 
     user.save();
 
-    res.send(`done adding car to the user ${user.name}`);
+    res.redirect("/cars/all");
   } catch (error) {
     console.log(error.message);
   }
@@ -37,12 +36,9 @@ const addCar = async (req, res) => {
 const getAllCars = async (req, res) => {
   try {
     const cars = await Car.find({}).populate("owner");
-    
-    if (!cars) {
-      return res.send("there is no cars");
-    }
 
-    res.render("cars/all", {cars});
+    console.log("Cars found:", cars);
+    res.render("cars/all", { cars });
   } catch (error) {
     console.log(error.message);
   }
@@ -84,7 +80,7 @@ const updateCarById = async (req, res) => {
       return res.send("error in updating car");
     }
 
-    res.send(updatedCar);
+    res.redirect("/cars/all");
   } catch (error) {
     console.log(error.message);
   }
@@ -107,7 +103,7 @@ const deleteCarById = async (req, res) => {
     if (!deleteCar) {
       return res.send("car couldn't be deleted");
     }
-    res.send("have been deleted");
+    res.redirect("/cars/all");
   } catch (error) {
     console.log(error.message);
   }

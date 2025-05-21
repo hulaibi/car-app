@@ -1,9 +1,13 @@
 <%- include('./partials/header.ejs') %>
 
-<% if (!user) { %>
-<p>Sign in or sign up to get started.</p>
-<% } else { %>
-    
-    <h1>Welcome to The Cars Show!</h1>
-<% } %>
+<div class="mainScreenSpace">
+  <% if (!user) { %>
+  <h1 class="spaceInTop">Sign in or sign up to get started.</h1>
+  <% } else { %>
+
+  <h1 class="spaceInTop">Welcome <%- user.name %> to The Cars app!</h1>
+
+  <% } %>
+</div>
+
 <%- include('./partials/footer.ejs') %>
