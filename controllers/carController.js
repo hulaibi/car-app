@@ -62,7 +62,6 @@ const updateCarById = async (req, res) => {
     const newYear = req.body.year;
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
-
     const newPrice = req.body.price;
     const updatedCar = await Car.findByIdAndUpdate(
       req.body.id,
