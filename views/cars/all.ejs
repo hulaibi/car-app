@@ -23,13 +23,15 @@
       <p><strong>Available:</strong> <%- car.isAvailable ? 'Yes' : 'No' %></p>
     </div>
     <% if (car.isAvailable && car.owner._id!=user._id ) { %>
-    <form
-      action="/cars/<%= car._id %>/buy"
+    <!-- <form
+      action="/transactions/buy/<%= car._id %>"
       method="POST"
       style="margin-top: 10px"
     >
       <button type="submit" class="btn-buy">Buy</button>
-    </form>
+    </form> -->
+    <a class="carsputton" href="/transactions/buy/<%= car._id %>">buy</a>
+
     <% } %> <% if(car.owner._id == user._id) {%>
     <a class="carsputton" href="/cars/edit/<%=car._id%>">edit</a>
     <form action="/cars/delete" method="POST" style="margin-top: 10px">
