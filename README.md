@@ -1,9 +1,15 @@
 # Car App
 
-![ERD](./planning-materials/ERD.png)
 
+# **User Stories:**
 [User-Stories](./planning-materials/User-Stories.md)
 
+
+## ERD
+![ERD](./planning-materials/ERD.png)
+
+
+## WireFrame
 ![wire](./planning-materials/WireFrame.png)
 
 ## Description
