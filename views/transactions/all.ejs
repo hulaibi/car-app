@@ -20,7 +20,8 @@
   <tbody>
     <% transactions.forEach(transaction => { %>
     <tr>
-      <td><%= transaction.car.model %></td>
+      <td><%= transaction.car ? transaction.car.model : 'not available' %></td>
+
       <td><%= transaction.buyer.name %></td>
       <td><%= transaction.seller.name %></td>
       <td><%= new Date(transaction.date).toLocaleDateString() %></td>

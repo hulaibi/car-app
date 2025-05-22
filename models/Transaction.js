@@ -7,6 +7,7 @@ const tranSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   price: { type: Number, required: true },
   location: { type: String, require: true },
+                                 
 });
 
 const Transaction = mongoose.model("Transaction", tranSchema);

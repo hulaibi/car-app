@@ -51,6 +51,9 @@ const buyCar = async (req, res) => {
       date: Date.now(),
       price: price,
       location: location,
+
+   
+
     });
     transaction.save();
     console.log(car.owner._id);
