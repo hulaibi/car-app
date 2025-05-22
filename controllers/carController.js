@@ -7,7 +7,7 @@ const addCar = async (req, res) => {
     const newYear = req.body.year;
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
-    const newOwner = req.body.name;
+    const newOwner = req.body.owner;
     const newPrice = req.body.price;
 
     const user = await User.findById(newOwner);
