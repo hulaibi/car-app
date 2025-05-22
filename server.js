@@ -15,7 +15,7 @@ const PORT = process.env.PORT ? process.env.PORT : 4000;
 
 const app = express();
 
-app.use(express.static("public"));
+app.use(express.static("styles"));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -33,12 +33,24 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "public")));
-
 app.use((req, res, next) => {
   res.locals.user = req.session.user || null; //Make `user` available in all EJS templates
   next();
 });
+
+const sessionauth = (req, res, next) => {
+  // Allow public routes without authentication
+  if (req.path.startsWith("/auth") || req.path === "/") {
+    return next();
+  }
+  // Redirect to sign-in if user is not authenticated
+  if (!req.session.user) {
+    return res.redirect("/auth/sign-in");
+  }
+  next();
+};
+
+app.use(sessionauth);
 
 app.use("/auth", authRouter);
 app.use("/users", userRouter);
