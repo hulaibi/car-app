@@ -22,7 +22,7 @@ This is a car management application that allows users to manage cars and transa
 
 ## File Structure
 
-**controllers**: Contains the route handlers for the application.
+# **controllers**: Contains the route handlers for the application.
 
 `authController.js`: Handles authentication routes.
 `registerUser`: Registers a new user.
@@ -42,9 +42,9 @@ This is a car management application that allows users to manage cars and transa
 `getUserById`: Retrieves a user by their ID.
 `getUserPro`: Retrieves a user's profile.
 
-**db**: Contains the database connection.
+# **db**: Contains the database connection.
 
-**models**: Contains the database models.
+# **models**: Contains the database models.
 
 `Car.js`: Car model.
 `model`: Car model (String, required).
@@ -69,7 +69,7 @@ This is a car management application that allows users to manage cars and transa
 `bought`: Array of references to Transaction models (ObjectId).
 `sell`: Array of references to Transaction models (ObjectId).
 
-**routes**: Contains the routes for the application.
+# **routes**: Contains the routes for the application.
 
 `authRouter.js`: Authentication routes.
 `/sign-up` (POST): Registers a new user.
@@ -95,11 +95,11 @@ This is a car management application that allows users to manage cars and transa
 `/:id` (GET): Retrieves a user by their ID.
 `/:id` (GET): Retrieves a user's profile.
 
-**styles**: Contains the CSS styles for the application.
+# **styles**: Contains the CSS styles for the application.
 
 `style.css`: CSS styles.
 
-**views**: Contains the EJS templates for the application.
+# **views**: Contains the EJS templates for the application.
 
 `auth`: Authentication templates.
 `cars`: Car templates.
