@@ -1,10 +1,6 @@
 const Car = require("../models/Car.js");
 const User = require("../models/User.js");
 
-const newCar = (req, res) => {
-  res.render("cars/new");
-};
-
 const addCar = async (req, res) => {
   try {
     const newModel = req.body.model;
@@ -66,7 +62,6 @@ const updateCarById = async (req, res) => {
     const newYear = req.body.year;
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
-
     const newPrice = req.body.price;
     const updatedCar = await Car.findByIdAndUpdate(
       req.body.id,
@@ -115,7 +110,6 @@ const deleteCarById = async (req, res) => {
 
 module.exports = {
   addCar,
-  newCar,
   getAllCars,
   getCarById,
   updateCarById,

@@ -1,36 +1,25 @@
 <%- include('../partials/header.ejs') %>
 
+<h2 class="spaceInTop" style="margin-bottom: 20px">buy the car</h2>
 
-  <h2>All Transactions</h2>
+<form action="/transactions/buy" method="POST">
+  <input type="hidden" name="id" value="<%= car._id %>" />
 
-  <% if (transactions.length === 0) { %>
-    <div class="alert">No transactions available!</div>
-  <% } else { %>
-    <table>
-      <thead>
-        <tr>
-          <th>Car</th>
-          <th>Buyer</th>
-          <th>Seller</th>
-          <th>Date</th>
-          <th>Price</th>
-          <th>Location</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% transactions.forEach(transaction => { %>
-          <tr>
-            <td> <%= transaction.car.model %></td>
-            <td><%= transaction.buyer.name %></td>
-            <td><%= transaction.seller.name %></td>
-            <td><%= new Date(transaction.date).toLocaleDateString() %></td>
-            <td>$<%= transaction.price.toFixed(2) %></td>
-            <td><%= transaction.location %></td>
-          </tr>
-        <% }) %>
-      </tbody>
-    </table>
-  <% } %>
+  <input type="text" name="model" value="<%= car.model%>" required disabled />
+  <input type="number" name="year" value="<%= car.year%>" required disabled />
+  <input
+    type="text"
+    name="condition"
+    value="<%= car.condition%>"
+    required
+    disabled
+  />
 
+  <input type="number" name="price" value="<%= car.price%>" required />
+  <input type="text" name="location" placeholder="location" required />
+  <input type="text" name="buyer" value="<%= user._id%>" required />
+
+  <button type="submit">buy</button>
+</form>
 
 <%- include('../partials/footer.ejs') %>
