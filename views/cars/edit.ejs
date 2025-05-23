@@ -3,23 +3,25 @@
 <h2 class="spaceInTop" style="margin-bottom: 20px">Edit car</h2>
 
 <form action="/cars/update" method="POST">
+
   <input type="hidden" name="_method" value="PUT">
+
   <input type="hidden" name="id" value="<%= car._id %>" />
 
-  <input
-    type="text"
-    name="model"
-    value="<%= car.model%>"
-    required
-  />
+  <input type="text" name="model" value="<%= car.model%>" required />
+
   <input type="number" name="year" value="<%= car.year%>" required />
+
   <input type="text" name="condition" value="<%= car.condition%>" required />
+
   <select name="isAvailable" >
     <option value="true"  <%= car.isAvailable === true ? 'selected' : '' %> >Available</option>
     <option value="false"  <%= car.isAvailable === false ? 'selected' : '' %>>Not Available</option>
   </select>
+
   <input type="number" name="price" value="<%= car.price%>" required />
 
+  <input type="text" name="imageUrl" value="<%= car.imageUrl ? car.imageUrl : '' %>" placeholder="Image URL" />
   <button type="submit">Update</button>
 </form>
 
