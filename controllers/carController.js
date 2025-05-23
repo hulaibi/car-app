@@ -9,6 +9,7 @@ const addCar = async (req, res) => {
     const newIsAvailable = req.body.isAvailable;
     const newOwner = req.body.owner;
     const newPrice = req.body.price;
+    const newImage = req.body.imageUrl
 
     const user = await User.findById(newOwner);
 
@@ -16,12 +17,13 @@ const addCar = async (req, res) => {
       return res.send("cant find owner");
     }
     const car = await Car.create({
-      model: req.body.model,
-      year: req.body.year,
-      condition: req.body.condition,
-      isAvailable: req.body.isAvailable,
-      price: req.body.price,
-      owner: user._id,
+       model: newModel,
+       year: newYear,
+       condition: newCondition,
+       isAvailable: newIsAvailable,
+       price: newPrice,
+       imageUrl: newImage,
+       owner: user._id,
     });
     user.cars.push(car._id);
 
@@ -63,6 +65,7 @@ const updateCarById = async (req, res) => {
     const newCondition = req.body.condition;
     const newIsAvailable = req.body.isAvailable;
     const newPrice = req.body.price;
+    const updateImage = req.body.imageUrl;
     const updatedCar = await Car.findByIdAndUpdate(
       req.body.id,
       {
@@ -71,6 +74,7 @@ const updateCarById = async (req, res) => {
         condition: newCondition,
         isAvailable: newIsAvailable,
         price: newPrice,
+        imageUrl: updateImage,
       },
       { new: true }
     );
