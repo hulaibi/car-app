@@ -1,10 +1,11 @@
 # Car App
 
 # **User Stories:**
-[User-Stories](./planning-materials/User-Stories.md)
+[User-Stories](./planning-materials/User-Stories.md) 
 
 ## ERD
 ![ERD](./planning-materials/ERD.png)
+
 
 ## WireFrame
 ![wire](./planning-materials/WireFrame.png)
@@ -42,7 +43,7 @@ This is a car management application that allows users to manage cars and transa
 `getUserById`: Retrieves a user by their ID.
 `getUserPro`: Retrieves a user's profile.
 
-# **db**: Contains the database connection.
+# **db**: Contains the database connection. 
 
 # **models**: Contains the database models.
 
