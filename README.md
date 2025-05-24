@@ -12,7 +12,7 @@
 
 ## Description
 
-This is a car management application that allows users to manage cars and transactions.
+This is a car application that allows users to buy & sell cars and transactions.
 
 ## How to Run
 
