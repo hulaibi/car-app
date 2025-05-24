@@ -43,7 +43,11 @@ const sessionauth = (req, res, next) => {
   if (req.path.startsWith("/auth") || req.path === "/") {
     return next();
   }
+<<<<<<< HEAD
+  
+=======
  
+>>>>>>> 1bcd411175dc0e2b19097e1b46461c220985be9e
   if (!req.session.user) {
     return res.redirect("/auth/sign-in");
   }
