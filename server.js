@@ -39,11 +39,15 @@ app.use((req, res, next) => {
 });
 
 const sessionauth = (req, res, next) => {
-  // Allow public routes without authentication
+  // Allow public routes without authentication - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
   if (req.path.startsWith("/auth") || req.path === "/") {
     return next();
   }
+<<<<<<< HEAD
   
+=======
+ 
+>>>>>>> 1bcd411175dc0e2b19097e1b46461c220985be9e
   if (!req.session.user) {
     return res.redirect("/auth/sign-in");
   }
