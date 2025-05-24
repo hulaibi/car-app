@@ -1,14 +1,40 @@
+<p align="center"><img style="width: 400px; height: auto;" alt="Logo" src="./images/logo.png"/></p>
+
+<br>
+
 # Car App
 
-# **User Stories:**
-[User-Stories](./planning-materials/User-Stories.md) 
+Application for sell and buy cars from users.
 
-## ERD
+<br>
+
+# Description
+
+A Buy and Sell website built with the MEN Stack enables users to register, list cars, and purchase vehicles. It uses MongoDB for CRUD operations across Car, User, and Transaction models, with secure authentication and dynamic EJS views. Users can browse cars, complete transactions, and view profiles with transaction history.
+
+<br>
+
+# Getting started
+
+### Deployed link:
+
+https://car-app-ddel.onrender.com/ <br>
+
+### Planning materials
+
+#### trello:
+
+![trello](./planning-materials/trello.png)
+<br>
+
+#### ERD:
+
 ![ERD](./planning-materials/ERD.png)
+<br>
 
+#### WireFrame:
 
-## WireFrame
-![wire](./planning-materials/WireFrame.png)
+![WireFrame](./planning-materials/WireFrame.png)
 
 ## Description
 
@@ -17,13 +43,15 @@ This is a car management application that allows users to manage cars and transa
 ## How to Run
 
 1.  Clone the repository.
-2.  Install dependencies: `npm install`
+2.  Install dependencies: `npm i`
 3.  Start the server: `npm start`
-4.  Open the application in your browser at `http://localhost:4000`
+4.  Open the application in your browser at `http://localhost:3000`
 
-## File Structure
+<br>
 
-# **controllers**: Contains the route handlers for the application.
+# File Structure
+
+### **controllers**: Contains the route handlers for the application.
 
 -`authController.js`: Handles authentication routes.
 -`registerUser`: Registers a new user.
@@ -70,7 +98,7 @@ This is a car management application that allows users to manage cars and transa
 -`bought`: Array of references to Transaction models (ObjectId).
 -`sell`: Array of references to Transaction models (ObjectId).
 
-# **routes**: Contains the routes for the application.
+#### **routes**: Contains the routes for the application.
 
 -`authRouter.js`: Authentication routes.
 -`/sign-up` (POST): Registers a new user.
@@ -96,11 +124,11 @@ This is a car management application that allows users to manage cars and transa
 -`/:id` (GET): Retrieves a user by their ID.
 -`/:id` (GET): Retrieves a user's profile.
 
-# **styles**: Contains the CSS styles for the application.
+#### **styles**: Contains the CSS styles for the application.
 
 -`style.css`: CSS styles.
 
-# **views**: Contains the EJS templates for the application.
+#### **views**: Contains the EJS templates for the application.
 
 -`auth`: Authentication templates.
 -`cars`: Car templates.

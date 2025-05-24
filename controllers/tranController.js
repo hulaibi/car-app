@@ -46,7 +46,7 @@ const buyCar = async (req, res) => {
     }
     const transaction = await Transaction.create({
       car: car._id,
-      buyer: buyerId, // change it to session later on
+      buyer: buyerId, 
       seller: car.owner._id,
       date: Date.now(),
       price: price,
@@ -69,7 +69,7 @@ const buyCar = async (req, res) => {
     }
     seller.save();
 
-    const buyer = await User.findById(buyerId); // later session
+    const buyer = await User.findById(buyerId); 
     buyer.cars.push(car._id);
     buyer.bought.push(transaction._id);
 
