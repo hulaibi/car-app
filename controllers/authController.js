@@ -80,36 +80,25 @@ const signOutUser = (req, res) => {
 
 const updatePassword = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id)
     if (!user) {
-      return res.send("No user with that ID exists!");
+      return res.send('No user with that ID exists!')
+      
     }
-
-    const validPassword = bcrypt.compareSync(
-      req.body.oldPassword,
-      user.password
-    );
-    if (!validPassword) {
-      return res.send("Your old password was not correct! Please try again.");
-    }
-
     if (req.body.newPassword !== req.body.confirmPassword) {
-      return res.send("Password and Confirm Password must match");
+      return res.send('Password and Confirm Password must match')
+    
     }
-
-    const hashedPassword = bcrypt.hashSync(req.body.newPassword, 12);
-
-    user.password = hashedPassword;
-    await user.save();
-
-    res.send(`Your password has been updated, ${user.name}!`);
+    const hashedPassword = bcrypt.hashSync(req.body.newPassword, 12)
+    user.password = hashedPassword
+    // It'
+    await user.save()
+    res.render('./auth/confirm.ejs', { user })
+    
   } catch (error) {
-    console.error(
-      "An error has occurred updating a user's password!",
-      error.message
-    );
+    console.error("An error has occurred updating a user's password!", error.message);
   }
-};
+}
 
 module.exports = {
   registerUser,
