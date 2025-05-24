@@ -22,6 +22,12 @@ const registerUser = async (req, res) => {
       phone: req.body.phone,
     });
 
+    req.session.user = {
+      email: user.email,
+      _id: user._id,
+      name: user.name,
+    };
+
     res.render("./auth/thanks.ejs", { user });
   } catch (error) {
     console.error("An error has occurred registering a user!", error.message);
