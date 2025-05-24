@@ -47,7 +47,7 @@ This is a car management application that allows users to manage cars and transa
 
 # **models**: Contains the database models.
 
--`Car.js`: Car model. 
+-`Car.js`: Car model.<br />
 -`model`: Car model (String, required). 
 -`year`: Year of manufacture (Number, required). 
 -`condition`: Condition of the car (String, required).
