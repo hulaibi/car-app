@@ -1,115 +1,197 @@
+<p align="center"><img src="./images/logo.png"/></p>
+
+<br>
+
 # Car App
 
-# **User Stories:**
-[User-Stories](./planning-materials/User-Stories.md) 
+Application for sell and buy cars from users.
 
-## ERD
+<br>
+
+# Description
+
+A Buy and Sell website built with the MEN Stack enables users to register, list cars, and purchase vehicles. It uses MongoDB for CRUD operations across Car, User, and Transaction models, with secure authentication and dynamic EJS views. Users can browse cars, complete transactions, and view profiles with transaction history.
+
+<br>
+
+# Getting started
+
+### Deployed link:
+
+https://car-app-ddel.onrender.com/ <br>
+
+### Planning materials
+
+#### trello:
+
+![trello](./planning-materials/trello.png)
+<br>
+
+#### ERD:
+
 ![ERD](./planning-materials/ERD.png)
+<br>
 
+#### WireFrame:
 
-## WireFrame
-![wire](./planning-materials/WireFrame.png)
+![WireFrame](./planning-materials/WireFrame.png)
 
-## Description
+#### UserStory:
 
-This is a car management application that allows users to manage cars and transactions.
+[UserStory](./planning-materials/User-Stories.md)
 
-## How to Run
+<br>
+
+# ScreenShots
+
+<img src='./images/screenShots/Screenshot 2025-05-24 112559.png'   />
+<br>
+<br>
+<img src='./images/screenShots/Screenshot 2025-05-24 112645.png'  />
+<br>
+<br>
+<img src='./images/screenShots/Screenshot 2025-05-24 112702.png'   />
+<br>
+<br>
+<img src='./images/screenShots/Screenshot 2025-05-24 112719.png'   />
+<br>
+<br>
+<img src='./images/screenShots/Screenshot 2025-05-24 113823.png'   />
+<br>
+<br>
+
+# How to Run
 
 1.  Clone the repository.
-2.  Install dependencies: `npm install`
+2.  Install dependencies: `npm i`
 3.  Start the server: `npm start`
-4.  Open the application in your browser at `http://localhost:4000`
+4.  Open the application in your browser at `http://localhost:3000`
 
-## File Structure
+<br>
 
-# **controllers**: Contains the route handlers for the application.
+# File Structure
 
--`authController.js`: Handles authentication routes.
--`registerUser`: Registers a new user.
--`signInUser`: Signs in an existing user.
--`signOutUser`: Signs out the current user.
--`updatePassword`: Updates the user's password.
--`carController.js`: Handles car routes.
--`addCar`: Adds a new car.
--`getAllCars`: Retrieves all cars.
--`getCarById`: Retrieves a car by its ID.
--`updateCarById`: Updates a car by its ID.
--`deleteCarById`: Deletes a car by its ID.
--`tranController.js`: Handles transaction routes.
--`getAllTran`: Retrieves all transactions.
--`buyCar`: Handles the purchase of a car.
--`userController.js`: Handles user routes.
--`getUserById`: Retrieves a user by their ID.
--`getUserPro`: Retrieves a user's profile.
+### **controllers**: Contains the route handlers for the application.
 
-# **db**: Contains the database connection. 
+- `authController.js`: Handles authentication routes. <br>
+  - `registerUser`: Registers a new user.<br>
+  - `signInUser`: Signs in an existing user. <br>
+  - `signOutUser`: Signs out the current user. <br>
+  - `updatePassword`: Updates the user's password. <br>
+- `carController.js`: Handles car routes. <br>
+  - `addCar`: Adds a new car. <br>
+  - `getAllCars`: Retrieves all cars. <br>
+  - `getCarById`: Retrieves a car by its ID. <br>
+  - `updateCarById`: Updates a car by its ID. <br>
+  - `deleteCarById`: Deletes a car by its ID. <br>
+- `tranController.js`: Handles transaction routes.<br>
+  - `getAllTran`: Retrieves all transactions. <br>
+  - `buyCar`: Handles the purchase of a car. <br>
+- `userController.js`: Handles user routes. <br>
+  - `getUserById`: Retrieves a user by their ID. <br>
+  - `getUserPro`: Retrieves a user's profile. <br>
 
-# **models**: Contains the database models.
+#### **db**: Contains the database connection.
 
--`Car.js`: Car model.
--`model`: Car model (String, required).
--`year`: Year of manufacture (Number, required).
--`condition`: Condition of the car (String, required).
--`isAvailable`: Availability status (Boolean, required).
--`owner`: Owner of the car (ObjectId, ref: "User").
--`price`: Price of the car (Number, required).
--`Transaction.js`: Transaction model.
--`car`: Reference to the Car model (ObjectId, required).
--`buyer`: Reference to the User model (ObjectId, required).
--`seller`: Reference to the User model (ObjectId, required).
--`date`: Date of the transaction (Date, default: Date.now).
--`price`: Price of the car (Number, required).
--`location`: Location of the transaction (String, required).
--`User.js`: User model.
--`name`: User's name (String, required).
--`email`: User's email (String, required).
--`password`: User's password (String, required).
--`phone`: User's phone number (String).
--`cars`: Array of references to Car models (ObjectId).
--`bought`: Array of references to Transaction models (ObjectId).
--`sell`: Array of references to Transaction models (ObjectId).
+#### **models**: Contains the database models.
 
-# **routes**: Contains the routes for the application.
+- `Car.js`: Car model. <br>
+  - `model`: Car model (String, required). <br>
+  - `year`: Year of manufacture (Number, required). <br>
+  - `condition`: Condition of the car (String, required).<br>
+  - `isAvailable`: Availability status (Boolean, required). <br>
+  - `owner`: Owner of the car (ObjectId, ref: "User"). <br>
+  - `price`: Price of the car (Number, required).<br>
+- `Transaction.js`: Transaction model.<br>
+  - `car`: Reference to the Car model (ObjectId, required). <br>
+  - `buyer`: Reference to the User model (ObjectId, required).<br>
+  - `seller`: Reference to the User model (ObjectId, required). <br>
+  - `date`: Date of the transaction (Date, default: Date.now). <br>
+  - `price`: Price of the car (Number, required). <br>
+  - `location`: Location of the transaction (String, required). <br>
+- `User.js`: User model. <br>
+  - `name`: User's name (String, required). <br>
+  - `email`: User's email (String, required). <br>
+  - `password`: User's password (String, required). <br>
+  - `phone`: User's phone number (String). <br>
+  - `cars`: Array of references to Car models (ObjectId).
+  - `bought`: Array of references to Transaction models (ObjectId). <br>
+  - `sell`: Array of references to Transaction models (ObjectId).
 
--`authRouter.js`: Authentication routes.
--`/sign-up` (POST): Registers a new user.
--`/sign-up` (GET): Renders the sign-up form.
--`/sign-in` (POST): Signs in an existing user.
--`/sign-in` (GET): Renders the sign-in form.
--`/sign-out` (GET): Signs out the current user.
--`/:id` (PUT): Updates the user's password.
--`/:id/update-password` (GET): Renders the update password form.
--`carRouter.js`: Car routes.
--`/new` (GET): Renders the form to add a new car.
--`/edit/:id` (GET): Renders the form to edit a car.
--`/new` (POST): Adds a new car.
--`/all` (GET): Retrieves all cars.
--`/:id` (GET): Retrieves a car by its ID.
--`/update` (POST): Updates a car.
--`/delete` (POST): Deletes a car.
--`tranRouter.js`: Transaction routes.
--`/buy/:id` (GET): Renders the form to buy a car.
--`/buy` (POST): Handles the purchase of a car.
--`/all` (GET): Retrieves all transactions.
--`userRouter.js`: User routes.
--`/:id` (GET): Retrieves a user by their ID.
--`/:id` (GET): Retrieves a user's profile.
+#### **routes**: Contains the routes for the application.
 
-# **styles**: Contains the CSS styles for the application.
+- `authRouter.js`: Authentication routes.<br>
+  - `/sign-up` (POST): Registers a new user. <br>
+  - `/sign-up` (GET): Renders the sign-up form.<br>
+  - `/sign-in` (POST): Signs in an existing user. <br>
+  - `/sign-in` (GET): Renders the sign-in form. <br>
+  - `/sign-out` (GET): Signs out the current user. <br>
+  - `/:id` (PUT): Updates the user's password. <br>
+  - `/:id/update-password` (GET): Renders the update password form. <br>
+- `carRouter.js`: Car routes. <br>
+  - `/new` (GET): Renders the form to add a new car. <br>
+  - `/edit/:id` (GET): Renders the form to edit a car.<br>
+  - `/new` (POST): Adds a new car. <br>
+  - `/all` (GET): Retrieves all cars. <br>
+  - `/:id` (GET): Retrieves a car by its ID. <br>
+  - `/update` (POST): Updates a car. <br>
+  - `/delete` (POST): Deletes a car. <br>
+- `tranRouter.js`: Transaction routes. <br>
+  - `/buy/:id` (GET): Renders the form to buy a car. <br>
+  - `/buy` (POST): Handles the purchase of a car. <br>
+  - `/all` (GET): Retrieves all transactions. <br>
+- `userRouter.js`: User routes. <br>
+  - `/:id` (GET): Retrieves a user by their ID. <br>
+  - `/:id` (GET): Retrieves a user's profile.
 
--`style.css`: CSS styles.
+#### **styles**: Contains the CSS styles for the application.
 
-# **views**: Contains the EJS templates for the application.
+- `style.css`: CSS styles.
 
--`auth`: Authentication templates.
--`cars`: Car templates.
--`transactions`: Transaction templates.
--`users`: User templates.
--`index.ejs`: Index template.
--`.env`: Contains the environment variables.
--`.gitignore`: Specifies intentionally untracked files that Git should ignore.
--`package-lock.json`: Records the exact versions of dependencies used in the project.
--`package.json`: Contains metadata about the project, such as the name, version, and dependencies.
--`README.md`: This file, providing information about the project.
--`server.js`: The main entry point for the application.
+#### **views**: Contains the EJS templates for the application.
+
+- `auth`: Authentication templates.<br>
+- `cars`: Car templates. <br>
+- `transactions`: Transaction templates. <br>
+- `users`: User templates.<br>
+
+#### **main**: Contains the main templates for the application.
+- `index.ejs`: Index template. <br>
+- `.env`: Contains the environment variables. (did not push it.) <br>
+- `.gitignore`: Specifies intentionally untracked files that Git should ignore.<br>
+- `package.json`: Contains metadata about the project, such as the name, version, and dependencies. <br>
+- `server.js`: The main entry point for the application.
+
+# Technologies Used
+
+■ [excalidraw](https://excalidraw.com/) <br>
+■ [draw.io](https://app.diagrams.net) <br>
+
+■ HTML<br>
+■ CSS<br>
+■ JavaScript <br>
+
+■ MEN Stack:
+
+- MongoDB
+- Express.js
+- Node.js
+
+■ npm dependencies:
+
+- bcrypt":^6.0.0 <br>
+- "dotenv":^16.5.0 <br>
+- "ejs": "^3.1.10 <br>
+- "express": "^5.1.0 <br>
+- "express-session": "^1.18.1 <br>
+- "method-override": "^3.0.0 <br>
+- "mongoose": "^8.15.0 <br>
+- "morgan": "^1.10.0 <br>
+- "nodemon": "^3.1.10"
+  <br>
+
+# Future Enhancements
+
+1. Enhance UI/UX.
+2. Add bidding and renting functionalities.
+3. real-time user chat system.
