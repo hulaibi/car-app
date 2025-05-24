@@ -1,4 +1,4 @@
-<p align="center"><img src="./images/logo.png"/></p>
+<p align="center"><img style="width: 400px; height: auto;" alt="Logo" src="./images/logo.png"/></p>
 
 <br>
 
@@ -156,6 +156,7 @@ https://car-app-ddel.onrender.com/ <br>
 - `users`: User templates.<br>
 
 #### **main**: Contains the main templates for the application.
+
 - `index.ejs`: Index template. <br>
 - `.env`: Contains the environment variables. (did not push it.) <br>
 - `.gitignore`: Specifies intentionally untracked files that Git should ignore.<br>
