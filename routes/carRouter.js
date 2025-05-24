@@ -21,8 +21,6 @@ router.post("/new", carController.addCar);
 router.get("/all", carController.getAllCars);
 router.get("/:id", carController.getCarById);
 router.post("/update", carController.updateCarById); // dont works with put
-
-// router.get("/new", carController.newCar);
 router.post("/delete", carController.deleteCarById); // dont works with put
 
 module.exports = router;
