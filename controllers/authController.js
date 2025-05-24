@@ -38,10 +38,6 @@ const signInUser = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (!user) {
-<<<<<<< HEAD
-     
-=======
->>>>>>> 1bcd411175dc0e2b19097e1b46461c220985be9e
       let error =
         "No user has been registered with that email. Please sign up!";
       return res.render("./auth/sign-in.ejs", { error });
@@ -49,10 +45,6 @@ const signInUser = async (req, res) => {
 
     const validPassword = bcrypt.compareSync(req.body.password, user.password);
     if (!validPassword) {
-<<<<<<< HEAD
-    
-=======
->>>>>>> 1bcd411175dc0e2b19097e1b46461c220985be9e
       let error = "Incorrect password! Please try again.";
       return res.render("./auth/sign-in.ejs", { error });
     }
