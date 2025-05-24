@@ -6,11 +6,7 @@ const getUserById = async (req, res) => {
       .populate("cars")
       .populate("bought")
       .populate("sell");
-<<<<<<< HEAD
-   
-=======
  
->>>>>>> 1bcd411175dc0e2b19097e1b46461c220985be9e
 
     const data = {
       _id: user._id,
