@@ -34,16 +34,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  res.locals.user = req.session.user || null; //Make `user` available in all EJS templates
+  res.locals.user = req.session.user || null; 
   next();
 });
 
 const sessionauth = (req, res, next) => {
-  // Allow public routes without authentication
+  // Allow public routes without authentication - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
   if (req.path.startsWith("/auth") || req.path === "/") {
     return next();
   }
-  // Redirect to sign-in if user is not authenticated
+ 
   if (!req.session.user) {
     return res.redirect("/auth/sign-in");
   }
